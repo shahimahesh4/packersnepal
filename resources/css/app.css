@@ -1,0 +1,50 @@
+@import '@fontsource-variable/manrope';
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Manrope Variable', 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Manrope Variable', 'Segoe UI', ui-sans-serif, system-ui, sans-serif;
+    --color-forest: #123f45;
+    --color-forest-deep: #082f35;
+    --color-ivory: #fbfaf7;
+    --color-sage: #e7f0ef;
+    --color-leaf: #ffb291;
+    --color-clay: #ff5a24;
+    --color-mist: #f1f5f4;
+}
+
+@layer base {
+    [x-cloak] { display: none !important; }
+    html { @apply scroll-smooth; }
+    body { @apply bg-ivory text-forest antialiased selection:bg-leaf selection:text-forest-deep; }
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    button, a, input, select, textarea { @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-clay; }
+    button { @apply cursor-pointer; }
+}
+
+@layer components {
+    .shell { @apply mx-auto w-full max-w-[88rem] px-5 sm:px-8 lg:px-12; }
+    .display { @apply font-display font-extrabold tracking-[-0.055em]; font-variation-settings: 'wght' 780; }
+    .eyebrow { @apply flex items-center gap-2.5 text-[0.68rem] font-bold uppercase tracking-[0.22em] text-forest/70; }
+    .eyebrow::before { content: ''; @apply h-2 w-2 rounded-full bg-clay; }
+    .button { @apply inline-flex min-h-12 items-center justify-center gap-3 rounded-xl bg-clay px-6 py-3 text-sm font-extrabold text-white shadow-[0_12px_30px_-12px_rgba(255,90,36,.7)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#e94712] hover:shadow-[0_16px_34px_-12px_rgba(255,90,36,.8)] disabled:cursor-wait disabled:opacity-60; }
+    .button-light { @apply bg-white text-forest-deep shadow-none hover:bg-sage; }
+    .text-link { @apply inline-flex items-center gap-2 border-b border-forest/40 pb-1 text-sm font-bold transition hover:border-clay hover:text-clay; }
+    .field { @apply mt-2 block min-h-12 w-full rounded-xl border border-forest/15 bg-white/90 px-4 py-3 text-base text-forest shadow-sm transition placeholder:text-forest/35 hover:border-forest/30 focus:border-clay focus:outline-2 focus:outline-clay/20; }
+    .surface { @apply rounded-2xl border border-forest/10 bg-white/80 shadow-[0_24px_70px_-38px_rgba(8,47,53,.28)]; }
+    .section-heading { @apply mt-5 font-display text-4xl font-extrabold leading-[1.08] tracking-[-0.05em] sm:text-5xl; font-variation-settings: 'wght' 760; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
+
+svg [fill="#ad3f3f"] { fill: #ff5a24; }
+svg [fill="#d36d66"] { fill: #ff835b; }
+svg [stroke="#8f3030"] { stroke: #123f45; }
